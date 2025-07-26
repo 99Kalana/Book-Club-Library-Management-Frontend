@@ -1,65 +1,71 @@
-Book Club Library Management - Frontend
-This repository contains the frontend application for the Book Club Library Management system. It provides a modern, responsive user interface for librarians to manage books, readers, lending, and system activities.
+📚 Book Club Library Management - Backend
+This repository contains the backend API for the Book Club Library Management web application. It is built with Node.js and Express.js, providing RESTful endpoints for managing books, readers, lending, user authentication, and system audit logs.
 
 ✨ Features
-Intuitive Dashboard: Overview of library statistics.
+User Authentication & Authorization: Secure signup, login, logout, and token refresh for librarian users. Role-based access control ensures only authorized users can perform specific actions.
 
-User Authentication:
+Password Management: Robust "Forgot Password" and "Reset Password" functionality via email.
 
-Librarian signup and login.
+User Profile Management: Librarians can securely view and update their profile details (name, email, password).
 
-"Forgot Password" and "Reset Password" flow.
+Book Management: Comprehensive CRUD (Create, Read, Update, Delete) operations for managing library book records.
 
-Secure session management with token refresh.
+Reader Management: Full CRUD capabilities for managing library reader profiles.
 
-User Profile: View and update librarian's own profile (name, email, password).
+Lending System: Efficiently manage book lending and return processes.
 
-Book Management: Add, view, edit, and delete book records.
+Overdue Books Tracking: Automated identification and management of overdue books.
 
-Reader Management: Add, view, edit, and delete reader records.
+Notifications: System for handling and sending various notifications (e.g., overdue reminders, system alerts).
 
-Lending & Returns: Manage the lending process of books to readers and their return.
+Audit Logging: Detailed and immutable logging of key system actions (e.g., user logins, book additions, lending events) for accountability and tracking.
 
-Overdue Books: Track and identify books that are overdue.
+Centralized Error Handling: Robust and consistent error handling for all API endpoints.
 
-Notifications: View system notifications.
+🚀 Technologies Used
+Node.js: JavaScript runtime environment.
 
-Audit Log Viewer: Browse the history of actions performed in the system.
+Express.js: Fast, unopinionated, minimalist web framework for Node.js.
 
-Responsive Design: Optimized for various screen sizes (desktop, tablet, mobile).
+MongoDB: Flexible NoSQL database for storing application data.
 
-Modern UI: Clean and visually appealing design with animations and transitions.
+Mongoose: Elegant MongoDB object modeling for Node.js.
 
-💻 Technologies Used
-React: JavaScript library for building user interfaces.
+TypeScript: Strongly typed superset of JavaScript that compiles to plain JavaScript.
 
-TypeScript: Adds static typing to JavaScript for better code quality and maintainability.
+JWT (JSON Web Tokens): For secure and stateless authentication.
 
-React Router DOM: For declarative routing in the application.
+Bcrypt: Library to hash passwords for secure storage.
 
-Axios: Promise-based HTTP client for making API requests to the backend.
+Nodemailer: Module for Node.js applications to allow easy email sending.
 
-Tailwind CSS: A utility-first CSS framework for rapid UI development.
+Dotenv: Loads environment variables from a .env file.
 
-React Hot Toast: For beautiful and responsive toast notifications.
+Cors: Middleware for enabling Cross-Origin Resource Sharing.
 
-React Icons: For a wide range of customizable vector icons.
+Cookie-parser: Middleware to parse Cookie header and populate req.cookies.
+
+Helmet: Helps secure Express apps by setting various HTTP headers.
+
+Morgan: HTTP request logger middleware for Node.js.
 
 ⚙️ Setup and Installation
-Follow these steps to get the frontend application running on your local machine.
+Follow these steps to get the backend server up and running on your local machine.
 
 Prerequisites
+Before you begin, ensure you have the following installed:
+
 Node.js (LTS version recommended)
 
 npm or Yarn
 
-The Book Club Library Management Backend running locally or deployed.
+MongoDB (local installation or a cloud service like MongoDB Atlas)
 
 Installation Steps
 Clone the repository:
 
-git clone <your-frontend-repo-url>
-cd <your-frontend-repo-directory>
+git clone <your-backend-repo-url>
+cd <your-backend-repo-directory>
 
 Install dependencies:
 
@@ -68,68 +74,91 @@ npm install
 yarn install
 
 Create a .env file:
-Create a file named .env in the root of your frontend project and add the following environment variable. This should point to your backend API.
+Create a file named .env in the root of your backend project. This file will store your environment variables. Copy the content below and replace the placeholder values with your actual configuration.
 
-VITE_API_BASE_URL="http://localhost:3000/api" # Ensure this matches your backend's PORT
+DB_URL="mongodb+srv://<your-username>:<your-password>@cluster0.afo8lnx.mongodb.net/book-club-library-management-mongodb"
+PORT=3000
+CLIENT_ORIGIN="http://localhost:5173" # URL of your frontend application
+ACCESS_TOKEN_SECRET="your_strong_access_token_secret_key"
+REFRESH_TOKEN_SECRET="your_strong_refresh_token_secret_key"
+NODE_ENV=development # or production
 
-Run the development server:
+# Email Configuration for Nodemailer (e.g., Gmail SMTP)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your_gmail_email@gmail.com
+EMAIL_PASS=your_gmail_app_password # Use an App Password if 2FA is enabled (e.g., "effx inqc nnuo fldf")
+EMAIL_FROM_NAME="Book Club Library"
 
-npm run dev
+DB_URL: Your MongoDB connection string. For MongoDB Atlas, you can find this in your cluster's "Connect" section.
+
+ACCESS_TOKEN_SECRET & REFRESH_TOKEN_SECRET: Generate strong, random strings for these. You can use a tool like node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" in your terminal.
+
+EMAIL_USER & EMAIL_PASS: Your Gmail credentials. If you have 2-Factor Authentication enabled on your Gmail account, you will need to generate an App Password instead of using your regular Gmail password.
+
+Run the server:
+
+npm start
 # OR
-yarn dev
+yarn start
 
-The application will typically open in your browser at http://localhost:5173 (or another port if 5173 is in use).
+The server will start on the specified PORT (default: 3000). You should see a message like Server running on http://localhost:3000.
 
 📂 Project Structure
 .
-├── public/                 # Public assets
 ├── src/
-│   ├── assets/             # Static assets (e.g., images, fonts)
-│   ├── components/         # Reusable UI components
-│   │   ├── Layout.tsx
-│   │   └── ...
-│   ├── context/            # React Context for global state (e.g., AuthContext)
-│   │   ├── AuthContext.ts
-│   │   └── AuthProvider.tsx
-│   ├── pages/              # Application pages/views
-│   │   ├── AdminRoutes.tsx
-│   │   ├── Auth/           # Authentication related pages
-│   │   │   ├── ForgotPasswordPage.tsx
-│   │   │   ├── LoginPage.tsx
-│   │   │   ├── ResetPasswordPage.tsx
-│   │   │   └── SignupPage.tsx
-│   │   ├── DashboardPage.tsx
-│   │   ├── BooksPage.tsx
-│   │   ├── ReadersPage.tsx
-│   │   ├── LendingPage.tsx
-│   │   ├── OverduePage.tsx
-│   │   ├── NotificationsPage.tsx
-│   │   ├── AuditLogPage.tsx
-│   │   └── ProfilePage.tsx
-│   ├── services/           # API service calls (e.g., authService.ts, apiClient.ts)
-│   │   ├── apiClient.ts
-│   │   └── authService.ts
-│   ├── types/              # TypeScript type definitions
+│   ├── config/             # ⚙️ Database connection setup
+│   │   └── db.ts
+│   ├── controllers/        # 🎛️ Logic for handling API requests (CRUD operations, auth)
+│   │   ├── audit.controller.ts
+│   │   ├── auth.controller.ts
+│   │   ├── book.controller.ts
+│   │   ├── lending.controller.ts
+│   │   ├── notification.controller.ts
+│   │   └── reader.controller.ts
+│   ├── errors/             # 🚨 Custom API error classes for consistent error responses
+│   │   └── ApiError.ts
+│   ├── middlewares/        # 🛡️ Express middleware (e.g., authentication, error handling)
+│   │   └── authenticateToken.ts
+│   ├── models/             # 📊 Mongoose schemas and models defining data structures
+│   │   ├── AuditLog.ts
+│   │   ├── Book.ts
+│   │   ├── Lending.ts
+│   │   ├── Notification.ts
+│   │   ├── Reader.ts
 │   │   └── User.ts
-│   ├── App.tsx             # Main React component
-│   ├── main.tsx            # Entry point for React application
-│   └── router.tsx          # React Router configuration
-├── .env                    # Environment variables
-├── .gitignore              # Files/directories to ignore in Git
-├── index.html              # Main HTML file
-├── package.json            # Project dependencies and scripts
-├── tailwind.config.js      # Tailwind CSS configuration
-├── tsconfig.json           # TypeScript configuration
-├── postcss.config.js       # PostCSS configuration
-└── README.md               # This file
+│   ├── routes/             # 🛣️ API route definitions and endpoint mapping
+│   │   ├── audit.routes.ts
+│   │   ├── auth.routes.ts
+│   │   ├── book.routes.ts
+│   │   ├── lending.routes.ts
+│   │   ├── notification.routes.ts
+│   │   └── reader.routes.ts
+│   ├── services/           # 📧 Utility services (e.g., email sending, external integrations)
+│   │   └── emailService.ts
+│   └── index.ts            # 🚀 Main application entry point and server setup
+├── .env                    # 🔑 Environment variables (sensitive data, configurations)
+├── .gitignore              # 🚫 Files/directories to ignore in Git version control
+├── package.json            # 📦 Project dependencies and npm scripts
+├── tsconfig.json           # 📝 TypeScript compiler configuration
+└── README.md               # 📄 This documentation file
 
-🌐 Authentication Flow
-The frontend handles authentication using React Context API for global state management.
+🔐 Authentication & Authorization
+The backend implements a robust authentication and authorization system using JWTs:
 
-Upon successful login, an access token is received and stored.
+Access Tokens: Short-lived tokens sent in the Authorization header (Bearer <token>) for securing API requests.
 
-All authenticated API requests include this access token in the Authorization header.
+Refresh Tokens: Long-lived tokens stored in secure, HTTP-only cookies. These are used to obtain new access tokens when the current one expires, ensuring a seamless user experience without frequent re-logins.
 
-A refresh token mechanism is implemented to automatically obtain new access tokens when the current one expires, ensuring a seamless user experience.
+Role-Based Access Control (RBAC): Ensures that only users with the librarian role can access protected routes and perform specific management operations.
 
-Protected routes are guarded by the AdminRoutes component, redirecting unauthenticated users to the login page. Public authentication pages (login, signup, forgot/reset password) are accessible without authentication.
+📝 Audit Logging
+A dedicated AuditLog collection is used to record all significant system actions. This includes events such as:
+
+User logins and logouts
+
+Creation, updates, and deletions of books, readers, and lending records
+
+Password reset requests and successes
+
+This provides a clear, immutable history of operations for accountability and debugging.
