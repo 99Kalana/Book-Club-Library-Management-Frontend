@@ -1,88 +1,105 @@
-#💻 Book Club Library Management - Frontend
-#This repository contains the frontend application for the Book Club Library Management system. It provides a modern, responsive user interface for librarians to manage books, readers, lending, and system activities.
+# 💻 Book Club Library Management - Frontend
 
-#✨ Features
-#Intuitive Dashboard: Provides an overview of key library statistics and quick access to main functionalities.
+This repository contains the frontend application for the Book Club Library Management system. It provides a modern, responsive user interface for librarians to manage books, readers, lending, and system activities.
 
-Robust User Authentication:
 
-Secure librarian signup and login processes.
+## ✨ Features
 
-Comprehensive "Forgot Password" and "Reset Password" flow for account recovery.
+- **Intuitive Dashboard**: Provides an overview of key library statistics and quick access to main functionalities.
 
-Seamless session management with automatic token refresh.
+- **Robust User Authentication**:
+  - Secure librarian signup and login processes.
+  - Comprehensive "Forgot Password" and "Reset Password" flow for account recovery.
+  - Seamless session management with automatic token refresh.
 
-User Profile Management: Librarians can view and update their personal profile details (name, email, password).
+- **User  Profile Management**: Librarians can view and update their personal profile details (name, email, password).
 
-Book Management: Full CRUD (Create, Read, Update, Delete) capabilities for efficient management of library book records.
+- **Book Management**: Full CRUD (Create, Read, Update, Delete) capabilities for efficient management of library book records.
 
-Reader Management: Complete CRUD operations for managing library reader profiles.
+- **Reader Management**: Complete CRUD operations for managing library reader profiles.
 
-Lending & Returns System: Streamlined process for lending books to readers and recording their returns.
+- **Lending & Returns System**: Streamlined process for lending books to readers and recording their returns.
 
-Overdue Books Tracking: Dedicated section to track and manage books that are currently overdue.
+- **Overdue Books Tracking**: Dedicated section to track and manage books that are currently overdue.
 
-Notifications: System to display important system notifications and alerts to the librarian.
+- **Notifications**: System to display important system notifications and alerts to the librarian.
 
-Audit Log Viewer: An interface to browse and review the history of actions performed within the system, enhancing accountability.
+- **Audit Log Viewer**: An interface to browse and review the history of actions performed within the system, enhancing accountability.
 
-Fully Responsive Design: Optimized user experience across various screen sizes, from desktop monitors to tablets and mobile phones.
+- **Fully Responsive Design**: Optimized user experience across various screen sizes, from desktop monitors to tablets and mobile phones.
 
-Modern & Engaging UI: Features a clean, visually appealing design with subtle animations, transitions, and consistent styling using Tailwind CSS.
+- **Modern & Engaging UI**: Features a clean, visually appealing design with subtle animations, transitions, and consistent styling using Tailwind CSS.
 
-💻 Technologies Used
-React: A declarative, component-based JavaScript library for building dynamic user interfaces.
 
-TypeScript: A superset of JavaScript that compiles to plain JavaScript, providing static type-checking for improved code quality and maintainability.
+## 💻 Technologies Used
 
-React Router DOM: A collection of navigational components that compose declaratively with your application.
+- **React**: A declarative, component-based JavaScript library for building dynamic user interfaces.
 
-Axios: A popular promise-based HTTP client for making requests to the backend API.
+- **TypeScript**: A superset of JavaScript that compiles to plain JavaScript, providing static type-checking for improved code quality and maintainability.
 
-Tailwind CSS: A utility-first CSS framework that allows for rapid and custom UI development directly in your markup.
+- **React Router DOM**: A collection of navigational components that compose declaratively with your application.
 
-React Hot Toast: A lightweight and highly customizable library for displaying beautiful, accessible toast notifications.
+- **Axios**: A popular promise-based HTTP client for making requests to the backend API.
 
-React Icons: A library providing a vast collection of popular SVG icons for React applications.
+- **Tailwind CSS**: A utility-first CSS framework that allows for rapid and custom UI development directly in your markup.
 
-⚙️ Setup and Installation
+- **React Hot Toast**: A lightweight and highly customizable library for displaying beautiful, accessible toast notifications.
+
+- **React Icons**: A library providing a vast collection of popular SVG icons for React applications.
+
+
+## ⚙️ Setup and Installation
+
 Follow these steps to get the frontend application running on your local machine.
 
-Prerequisites
+
+### Prerequisites
+
 Before you begin, ensure you have the following installed:
 
-Node.js (LTS version recommended)
+- Node.js (LTS version recommended)
+- npm or Yarn
+- The Book Club Library Management Backend running locally or deployed.
 
-npm or Yarn
 
-The Book Club Library Management Backend running locally or deployed.
+### Installation Steps
 
-Installation Steps
-Clone the repository:
+1. Clone the repository:
 
-git clone <your-frontend-repo-url>
-cd <your-frontend-repo-directory>
+   ```bash
+   git clone <your-frontend-repo-url>
+   cd <your-frontend-repo-directory>
+   ```
 
-Install dependencies:
+2. Install dependencies:
 
-npm install
-# OR
-yarn install
+   ```bash
+   npm install
+   # OR
+   yarn install
+   ```
 
-Create a .env file:
-Create a file named .env in the root of your frontend project. This file will store your environment variables. Copy the content below and ensure the VITE_API_BASE_URL matches the URL of your running backend API.
+3. Create a `.env` file:
+   - Create a file named `.env` in the root of your frontend project. This file will store your environment variables. Copy the content below and ensure the `VITE_API_BASE_URL` matches the URL of your running backend API.
 
-VITE_API_BASE_URL="http://localhost:3000/api" # Ensure this matches your backend's PORT and API prefix
+   ```plaintext
+   VITE_API_BASE_URL="http://localhost:3000/api" # Ensure this matches your backend's PORT and API prefix
+   ```
 
-Run the development server:
+4. Run the development server:
 
-npm run dev
-# OR
-yarn dev
+   ```bash
+   npm run dev
+   # OR
+   yarn dev
+   ```
 
-The application will typically open in your browser at http://localhost:5173 (or another port if 5173 is in use).
+   The application will typically open in your browser at `http://localhost:5173` (or another port if 5173 is in use).
 
-📂 Project Structure
+
+## 📂 Project Structure
+
+```
 .
 ├── public/                 # 🌐 Static assets served directly (e.g., favicon)
 ├── src/
@@ -123,14 +140,17 @@ The application will typically open in your browser at http://localhost:5173 (or
 ├── tailwind.config.js      # 🎨 Tailwind CSS configuration file
 ├── postcss.config.js       # 🖌️ PostCSS configuration for Tailwind CSS processing
 └── README.md               # 📄 This documentation file
+```
 
-🌐 Authentication Flow
+
+## 🌐 Authentication Flow
+
 The frontend application integrates seamlessly with the backend's authentication system:
 
-React Context API: Used for managing the global authentication state (isLoggedIn, user data, login/logout functions).
+- **React Context API**: Used for managing the global authentication state (isLoggedIn, user data, login/logout functions).
 
-JWT Handling: Upon successful login, the access token is received and stored securely. All subsequent authenticated API requests automatically include this token in the Authorization header.
+- **JWT Handling**: Upon successful login, the access token is received and stored securely. All subsequent authenticated API requests automatically include this token in the Authorization header.
 
-Token Refresh Mechanism: An Axios interceptor automatically detects expired access tokens (401/403 errors) and attempts to refresh them using the stored refresh token. This ensures continuous user sessions without manual re-login.
+- **Token Refresh Mechanism**: An Axios interceptor automatically detects expired access tokens (401/403 errors) and attempts to refresh them using the stored refresh token. This ensures continuous user sessions without manual re-login.
 
-Route Protection: The AdminRoutes component acts as a guard, ensuring that only authenticated users with the correct role (librarian) can access protected dashboard routes. Public authentication pages (login, signup, forgot/reset password) are explicitly configured to be accessible without prior authentication.
+- **Route Protection**: The AdminRoutes component acts as a guard, ensuring that only authenticated users with the correct role (librarian) can access protected dashboard routes. Public authentication pages (login, signup, forgot/reset password) are explicitly configured to be accessible without prior authentication.
