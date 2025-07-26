@@ -1,8 +1,8 @@
-💻 Book Club Library Management - Frontend
-This repository contains the frontend application for the Book Club Library Management system. It provides a modern, responsive user interface for librarians to manage books, readers, lending, and system activities.
+#💻 Book Club Library Management - Frontend
+#This repository contains the frontend application for the Book Club Library Management system. It provides a modern, responsive user interface for librarians to manage books, readers, lending, and system activities.
 
-✨ Features
-Intuitive Dashboard: Provides an overview of key library statistics and quick access to main functionalities.
+#✨ Features
+#Intuitive Dashboard: Provides an overview of key library statistics and quick access to main functionalities.
 
 Robust User Authentication:
 
