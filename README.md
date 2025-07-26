@@ -2,163 +2,163 @@
 This repository contains the backend API for the Book Club Library Management web application. It is built with Node.js and Express.js, providing RESTful endpoints for managing books, readers, lending, user authentication, and system audit logs.
 
 ✨ Features
-User Authentication & Authorization: Secure signup, login, logout, and token refresh for librarian users. Role-based access control ensures only authorized users can perform specific actions.
+User Authentication & Authorization
+Secure signup, login, logout, and token refresh for librarian users. Role-based access control ensures only authorized users can perform specific actions.
 
-Password Management: Robust "Forgot Password" and "Reset Password" functionality via email.
+Password Management
+Robust "Forgot Password" and "Reset Password" functionality via email.
 
-User Profile Management: Librarians can securely view and update their profile details (name, email, password).
+User Profile Management
+Librarians can securely view and update their profile details (name, email, password).
 
-Book Management: Comprehensive CRUD (Create, Read, Update, Delete) operations for managing library book records.
+Book Management
+Comprehensive CRUD (Create, Read, Update, Delete) operations for managing library book records.
 
-Reader Management: Full CRUD capabilities for managing library reader profiles.
+Reader Management
+Full CRUD capabilities for managing library reader profiles.
 
-Lending System: Efficiently manage book lending and return processes.
+Lending System
+Efficiently manage book lending and return processes.
 
-Overdue Books Tracking: Automated identification and management of overdue books.
+Overdue Books Tracking
+Automated identification and management of overdue books.
 
-Notifications: System for handling and sending various notifications (e.g., overdue reminders, system alerts).
+Notifications
+System for handling and sending various notifications (e.g., overdue reminders, system alerts).
 
-Audit Logging: Detailed and immutable logging of key system actions (e.g., user logins, book additions, lending events) for accountability and tracking.
+Audit Logging
+Detailed and immutable logging of key system actions (e.g., user logins, book additions, lending events) for accountability and tracking.
 
-Centralized Error Handling: Robust and consistent error handling for all API endpoints.
+Centralized Error Handling
+Robust and consistent error handling for all API endpoints.
 
 🚀 Technologies Used
-Node.js: JavaScript runtime environment.
+Node.js – JavaScript runtime environment
 
-Express.js: Fast, unopinionated, minimalist web framework for Node.js.
+Express.js – Minimalist web framework for Node.js
 
-MongoDB: Flexible NoSQL database for storing application data.
+MongoDB – NoSQL database
 
-Mongoose: Elegant MongoDB object modeling for Node.js.
+Mongoose – Elegant MongoDB object modeling
 
-TypeScript: Strongly typed superset of JavaScript that compiles to plain JavaScript.
+TypeScript – Strongly typed superset of JavaScript
 
-JWT (JSON Web Tokens): For secure and stateless authentication.
+JWT – JSON Web Tokens for authentication
 
-Bcrypt: Library to hash passwords for secure storage.
+Bcrypt – Secure password hashing
 
-Nodemailer: Module for Node.js applications to allow easy email sending.
+Nodemailer – Email sending module
 
-Dotenv: Loads environment variables from a .env file.
+Dotenv – Environment variable management
 
-Cors: Middleware for enabling Cross-Origin Resource Sharing.
+Cors – Cross-Origin Resource Sharing
 
-Cookie-parser: Middleware to parse Cookie header and populate req.cookies.
+Cookie-parser – Cookie parsing middleware
 
-Helmet: Helps secure Express apps by setting various HTTP headers.
+Helmet – Sets secure HTTP headers
 
-Morgan: HTTP request logger middleware for Node.js.
+Morgan – HTTP request logger
 
 ⚙️ Setup and Installation
-Follow these steps to get the backend server up and running on your local machine.
-
 Prerequisites
-Before you begin, ensure you have the following installed:
-
-Node.js (LTS version recommended)
+Node.js (LTS version)
 
 npm or Yarn
 
-MongoDB (local installation or a cloud service like MongoDB Atlas)
+MongoDB (local or cloud via MongoDB Atlas)
 
 Installation Steps
 Clone the repository:
 
+bash
+Copy
+Edit
 git clone <your-backend-repo-url>
 cd <your-backend-repo-directory>
-
 Install dependencies:
 
+bash
+Copy
+Edit
 npm install
 # OR
 yarn install
+Create a .env file in the root directory:
 
-Create a .env file:
-Create a file named .env in the root of your backend project. This file will store your environment variables. Copy the content below and replace the placeholder values with your actual configuration.
-
-DB_URL="mongodb+srv://<your-username>:<your-password>@cluster0.afo8lnx.mongodb.net/book-club-library-management-mongodb"
+ini
+Copy
+Edit
+DB_URL="mongodb+srv://<your-username>:<your-password>@cluster0.mongodb.net/book-club-library-management-mongodb"
 PORT=3000
-CLIENT_ORIGIN="http://localhost:5173" # URL of your frontend application
+CLIENT_ORIGIN="http://localhost:5173"
+
 ACCESS_TOKEN_SECRET="your_strong_access_token_secret_key"
 REFRESH_TOKEN_SECRET="your_strong_refresh_token_secret_key"
-NODE_ENV=development # or production
+NODE_ENV=development
 
-# Email Configuration for Nodemailer (e.g., Gmail SMTP)
+# Email Configuration
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USER=your_gmail_email@gmail.com
-EMAIL_PASS=your_gmail_app_password # Use an App Password if 2FA is enabled (e.g., "effx inqc nnuo fldf")
+EMAIL_PASS=your_gmail_app_password
 EMAIL_FROM_NAME="Book Club Library"
+💡 Notes
 
-DB_URL: Your MongoDB connection string. For MongoDB Atlas, you can find this in your cluster's "Connect" section.
+Generate secrets using:
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
-ACCESS_TOKEN_SECRET & REFRESH_TOKEN_SECRET: Generate strong, random strings for these. You can use a tool like node -e "console.log(require('crypto').randomBytes(32).toString('hex'))" in your terminal.
+Use App Passwords if Gmail has 2FA enabled.
 
-EMAIL_USER & EMAIL_PASS: Your Gmail credentials. If you have 2-Factor Authentication enabled on your Gmail account, you will need to generate an App Password instead of using your regular Gmail password.
+Start the server:
 
-Run the server:
-
+bash
+Copy
+Edit
 npm start
 # OR
 yarn start
-
-The server will start on the specified PORT (default: 3000). You should see a message like Server running on http://localhost:3000.
+The server will start on http://localhost:3000 (or your configured PORT).
 
 📂 Project Structure
+csharp
+Copy
+Edit
 .
 ├── src/
-│   ├── config/             # ⚙️ Database connection setup
-│   │   └── db.ts
-│   ├── controllers/        # 🎛️ Logic for handling API requests (CRUD operations, auth)
-│   │   ├── audit.controller.ts
-│   │   ├── auth.controller.ts
-│   │   ├── book.controller.ts
-│   │   ├── lending.controller.ts
-│   │   ├── notification.controller.ts
-│   │   └── reader.controller.ts
-│   ├── errors/             # 🚨 Custom API error classes for consistent error responses
-│   │   └── ApiError.ts
-│   ├── middlewares/        # 🛡️ Express middleware (e.g., authentication, error handling)
-│   │   └── authenticateToken.ts
-│   ├── models/             # 📊 Mongoose schemas and models defining data structures
-│   │   ├── AuditLog.ts
-│   │   ├── Book.ts
-│   │   ├── Lending.ts
-│   │   ├── Notification.ts
-│   │   ├── Reader.ts
-│   │   └── User.ts
-│   ├── routes/             # 🛣️ API route definitions and endpoint mapping
-│   │   ├── audit.routes.ts
-│   │   ├── auth.routes.ts
-│   │   ├── book.routes.ts
-│   │   ├── lending.routes.ts
-│   │   ├── notification.routes.ts
-│   │   └── reader.routes.ts
-│   ├── services/           # 📧 Utility services (e.g., email sending, external integrations)
-│   │   └── emailService.ts
-│   └── index.ts            # 🚀 Main application entry point and server setup
-├── .env                    # 🔑 Environment variables (sensitive data, configurations)
-├── .gitignore              # 🚫 Files/directories to ignore in Git version control
-├── package.json            # 📦 Project dependencies and npm scripts
-├── tsconfig.json           # 📝 TypeScript compiler configuration
-└── README.md               # 📄 This documentation file
-
+│   ├── config/             # ⚙️ Database connection
+│   ├── controllers/        # 🎛️ API logic (CRUD, auth)
+│   ├── errors/             # 🚨 Custom error classes
+│   ├── middlewares/        # 🛡️ Auth, error handling
+│   ├── models/             # 📊 Mongoose schemas
+│   ├── routes/             # 🛣️ API endpoints
+│   ├── services/           # 📧 Utility services (email, etc.)
+│   └── index.ts            # 🚀 App entry point
+├── .env                    # 🔑 Environment variables
+├── .gitignore              # 🚫 Git ignored files
+├── package.json            # 📦 Dependencies and scripts
+├── tsconfig.json           # 📝 TypeScript config
+└── README.md               # 📄 Project documentation
 🔐 Authentication & Authorization
-The backend implements a robust authentication and authorization system using JWTs:
+Access Tokens
+Short-lived tokens sent via Authorization: Bearer <token> header.
 
-Access Tokens: Short-lived tokens sent in the Authorization header (Bearer <token>) for securing API requests.
+Refresh Tokens
+Long-lived, HTTP-only cookies used to issue new access tokens.
 
-Refresh Tokens: Long-lived tokens stored in secure, HTTP-only cookies. These are used to obtain new access tokens when the current one expires, ensuring a seamless user experience without frequent re-logins.
-
-Role-Based Access Control (RBAC): Ensures that only users with the librarian role can access protected routes and perform specific management operations.
+Role-Based Access Control (RBAC)
+Only librarian users can access and manage protected endpoints.
 
 📝 Audit Logging
-A dedicated AuditLog collection is used to record all significant system actions. This includes events such as:
+All key system actions are recorded in the AuditLog collection:
 
-User logins and logouts
+User logins/logouts
 
-Creation, updates, and deletions of books, readers, and lending records
+Book, reader, and lending CRUD operations
 
-Password reset requests and successes
+Password reset requests and completions
 
-This provides a clear, immutable history of operations for accountability and debugging.
+🔍 This log provides traceability and aids debugging and accountability.
+
+📫 Feedback & Contributions
+Pull requests, issues, and suggestions are welcome!
+Help make this system better for libraries everywhere. 😊
