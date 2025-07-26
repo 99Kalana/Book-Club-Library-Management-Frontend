@@ -1,35 +1,53 @@
 📚 Book Club Library Management - Backend
 This repository contains the backend API for the Book Club Library Management web application. It is built with Node.js and Express.js, providing RESTful endpoints for managing books, readers, lending, user authentication, and system audit logs.
 
-## ✨ Features
+✨ Features
+User Authentication & Authorization: Secure signup, login, logout, and token refresh for librarian users. Role-based access control ensures only authorized users can perform specific actions.
 
-* **Intuitive Dashboard:** Provides an overview of key library statistics and quick access to main functionalities.
-* **Robust User Authentication:**
-    * Secure librarian signup and login processes.
-    * Comprehensive "Forgot Password" and "Reset Password" flow for account recovery.
-    * Seamless session management with automatic token refresh.
-* **User Profile Management:** Librarians can view and update their personal profile details (name, email, password).
-* **Book Management:** Full CRUD (Create, Read, Update, Delete) capabilities for efficient management of library book records.
-* **Reader Management:** Complete CRUD operations for managing library reader profiles.
-* **Lending & Returns System:** Streamlined process for lending books to readers and recording their returns.
-* **Overdue Books Tracking:** Dedicated section to track and manage books that are currently overdue.
-* **Notifications:** System to display important system notifications and alerts to the librarian.
-* **Audit Log Viewer:** An interface to browse and review the history of actions performed within the system, enhancing accountability.
-* **Fully Responsive Design:** Optimized user experience across various screen sizes, from desktop monitors to tablets and mobile phones.
-* **Modern & Engaging UI:** Features a clean, visually appealing design with subtle animations, transitions, and consistent styling using Tailwind CSS.
+Password Management: Robust "Forgot Password" and "Reset Password" functionality via email.
 
----
+User Profile Management: Librarians can securely view and update their profile details (name, email, password).
 
-## 💻 Technologies Used
+Book Management: Comprehensive CRUD (Create, Read, Update, Delete) operations for managing library book records.
 
-* **React:** A declarative, component-based JavaScript library for building dynamic user interfaces.
-* **TypeScript:** A superset of JavaScript that compiles to plain JavaScript, providing static type-checking for improved code quality and maintainability.
-* **React Router DOM:** A collection of navigational components that compose declaratively with your application.
-* **Axios:** A popular promise-based HTTP client for making requests to the backend API.
-* **Tailwind CSS:** A utility-first CSS framework that allows for rapid and custom UI development directly in your markup.
-* **React Hot Toast:** A lightweight and highly customizable library for displaying beautiful, accessible toast notifications.
-* **React Icons:** A library providing a vast collection of popular SVG icons for React applications.
+Reader Management: Full CRUD capabilities for managing library reader profiles.
 
+Lending System: Efficiently manage book lending and return processes.
+
+Overdue Books Tracking: Automated identification and management of overdue books.
+
+Notifications: System for handling and sending various notifications (e.g., overdue reminders, system alerts).
+
+Audit Logging: Detailed and immutable logging of key system actions (e.g., user logins, book additions, lending events) for accountability and tracking.
+
+Centralized Error Handling: Robust and consistent error handling for all API endpoints.
+
+🚀 Technologies Used
+Node.js: JavaScript runtime environment.
+
+Express.js: Fast, unopinionated, minimalist web framework for Node.js.
+
+MongoDB: Flexible NoSQL database for storing application data.
+
+Mongoose: Elegant MongoDB object modeling for Node.js.
+
+TypeScript: Strongly typed superset of JavaScript that compiles to plain JavaScript.
+
+JWT (JSON Web Tokens): For secure and stateless authentication.
+
+Bcrypt: Library to hash passwords for secure storage.
+
+Nodemailer: Module for Node.js applications to allow easy email sending.
+
+Dotenv: Loads environment variables from a .env file.
+
+Cors: Middleware for enabling Cross-Origin Resource Sharing.
+
+Cookie-parser: Middleware to parse Cookie header and populate req.cookies.
+
+Helmet: Helps secure Express apps by setting various HTTP headers.
+
+Morgan: HTTP request logger middleware for Node.js.
 
 ⚙️ Setup and Installation
 Follow these steps to get the backend server up and running on your local machine.
