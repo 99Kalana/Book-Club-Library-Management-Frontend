@@ -1,69 +1,135 @@
-# React + TypeScript + Vite
+Book Club Library Management - Frontend
+This repository contains the frontend application for the Book Club Library Management system. It provides a modern, responsive user interface for librarians to manage books, readers, lending, and system activities.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Features
+Intuitive Dashboard: Overview of library statistics.
 
-Currently, two official plugins are available:
+User Authentication:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Librarian signup and login.
 
-## Expanding the ESLint configuration
+"Forgot Password" and "Reset Password" flow.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Secure session management with token refresh.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+User Profile: View and update librarian's own profile (name, email, password).
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Book Management: Add, view, edit, and delete book records.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Reader Management: Add, view, edit, and delete reader records.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Lending & Returns: Manage the lending process of books to readers and their return.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Overdue Books: Track and identify books that are overdue.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Notifications: View system notifications.
+
+Audit Log Viewer: Browse the history of actions performed in the system.
+
+Responsive Design: Optimized for various screen sizes (desktop, tablet, mobile).
+
+Modern UI: Clean and visually appealing design with animations and transitions.
+
+💻 Technologies Used
+React: JavaScript library for building user interfaces.
+
+TypeScript: Adds static typing to JavaScript for better code quality and maintainability.
+
+React Router DOM: For declarative routing in the application.
+
+Axios: Promise-based HTTP client for making API requests to the backend.
+
+Tailwind CSS: A utility-first CSS framework for rapid UI development.
+
+React Hot Toast: For beautiful and responsive toast notifications.
+
+React Icons: For a wide range of customizable vector icons.
+
+⚙️ Setup and Installation
+Follow these steps to get the frontend application running on your local machine.
+
+Prerequisites
+Node.js (LTS version recommended)
+
+npm or Yarn
+
+The Book Club Library Management Backend running locally or deployed.
+
+Installation Steps
+Clone the repository:
+
+git clone <your-frontend-repo-url>
+cd <your-frontend-repo-directory>
+
+Install dependencies:
+
+npm install
+# OR
+yarn install
+
+Create a .env file:
+Create a file named .env in the root of your frontend project and add the following environment variable. This should point to your backend API.
+
+VITE_API_BASE_URL="http://localhost:3000/api" # Ensure this matches your backend's PORT
+
+Run the development server:
+
+npm run dev
+# OR
+yarn dev
+
+The application will typically open in your browser at http://localhost:5173 (or another port if 5173 is in use).
+
+📂 Project Structure
+.
+├── public/                 # Public assets
+├── src/
+│   ├── assets/             # Static assets (e.g., images, fonts)
+│   ├── components/         # Reusable UI components
+│   │   ├── Layout.tsx
+│   │   └── ...
+│   ├── context/            # React Context for global state (e.g., AuthContext)
+│   │   ├── AuthContext.ts
+│   │   └── AuthProvider.tsx
+│   ├── pages/              # Application pages/views
+│   │   ├── AdminRoutes.tsx
+│   │   ├── Auth/           # Authentication related pages
+│   │   │   ├── ForgotPasswordPage.tsx
+│   │   │   ├── LoginPage.tsx
+│   │   │   ├── ResetPasswordPage.tsx
+│   │   │   └── SignupPage.tsx
+│   │   ├── DashboardPage.tsx
+│   │   ├── BooksPage.tsx
+│   │   ├── ReadersPage.tsx
+│   │   ├── LendingPage.tsx
+│   │   ├── OverduePage.tsx
+│   │   ├── NotificationsPage.tsx
+│   │   ├── AuditLogPage.tsx
+│   │   └── ProfilePage.tsx
+│   ├── services/           # API service calls (e.g., authService.ts, apiClient.ts)
+│   │   ├── apiClient.ts
+│   │   └── authService.ts
+│   ├── types/              # TypeScript type definitions
+│   │   └── User.ts
+│   ├── App.tsx             # Main React component
+│   ├── main.tsx            # Entry point for React application
+│   └── router.tsx          # React Router configuration
+├── .env                    # Environment variables
+├── .gitignore              # Files/directories to ignore in Git
+├── index.html              # Main HTML file
+├── package.json            # Project dependencies and scripts
+├── tailwind.config.js      # Tailwind CSS configuration
+├── tsconfig.json           # TypeScript configuration
+├── postcss.config.js       # PostCSS configuration
+└── README.md               # This file
+
+🌐 Authentication Flow
+The frontend handles authentication using React Context API for global state management.
+
+Upon successful login, an access token is received and stored.
+
+All authenticated API requests include this access token in the Authorization header.
+
+A refresh token mechanism is implemented to automatically obtain new access tokens when the current one expires, ensuring a seamless user experience.
+
+Protected routes are guarded by the AdminRoutes component, redirecting unauthenticated users to the login page. Public authentication pages (login, signup, forgot/reset password) are accessible without authentication.
